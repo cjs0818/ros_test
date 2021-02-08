@@ -23,9 +23,10 @@
 
   <include file="$(find cjs_robot_moveit_config)/launch/ros_controllers.launch"/>
 
-<!--
+
+  <!--  Remap /joint_states -> robotNamespace/joint_states -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
       <remap from="/joint_states" to="/open_manipulator/joint_states"/>
   </node>
--->
+
 </launch>

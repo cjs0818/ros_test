@@ -32,7 +32,7 @@ open_manipulator:
        - joint4
 
 controller_list:
-  - name: ""
+  - name: "open_manipulator/arm_controller"
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     joints:
