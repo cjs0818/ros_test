@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cjs_robot_description
+    relative_path: urdf/open_manipulator.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/cjs_robot.srdf
+  CONFIG:
+    author_name: jschoi
+    author_email: pristine70@gmail.com
+    generated_timestamp: 1612760325
