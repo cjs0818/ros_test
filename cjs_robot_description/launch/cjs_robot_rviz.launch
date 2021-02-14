@@ -1,0 +1,45 @@
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find cjs_robot_description)/urdf/open_manipulator.urdf.xacro'" />
+
+  <!-- startup simulated world -->
+<!--
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>
+  </include>
+-->
+
+  <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+<!--
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0"
+    respawn="false" output="screen" />
+-->
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+
+
+  <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
+<!--
+  <include file="$(find cjs_robot_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="pipeline" value="ompl"/>
+    <arg name="load_robot_description" value="true"/>
+  </include>
+-->
+
+
+  <!-- rviz -->
+  <node name="$(anon rviz)" pkg="rviz" type="rviz" respawn="false"
+        args="-d $(find cjs_robot_description)/launch/cjs_robot.rviz" output="screen">
+  </node>
+
+
+</launch>
