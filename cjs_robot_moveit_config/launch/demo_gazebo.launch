@@ -42,16 +42,17 @@
     <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
     <rosparam param="source_list">[/joint_states]</rosparam>
   </node>
-  <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" if="$(arg use_gui)">
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" if="$(arg use_gui)">
     <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
     <rosparam param="source_list">[/joint_states]</rosparam>
   </node>
 
   <!-- Given the published joint states, publish tf for the robot links -->
 <!--
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" >
+    <remap from="/joint_states" to="/open_manipulator/joint_states"/>
+  </node>
 -->
-
 
   <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
   <include file="$(find cjs_robot_moveit_config)/launch/move_group.launch">
