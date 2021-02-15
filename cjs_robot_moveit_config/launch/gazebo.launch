@@ -12,12 +12,21 @@
   </include>
 
   <!-- send robot urdf to param server -->
+<!--
   <param name="robot_description" textfile="$(arg urdf_path)" />
+-->
+ <param name="robot_description"
+        command="$(find xacro)/xacro '$(find cjs_robot_description)/urdf/open_manipulator.urdf.xacro'" />
 
   <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0"
     respawn="false" output="screen" />
 
   <include file="$(find cjs_robot_moveit_config)/launch/ros_controllers.launch"/>
+
+  <!--  Added by jschoi: Remap /joint_states -> robotNamespace/joint_states -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" >
+    <remap from="/joint_states" to="/open_manipulator/joint_states"/>
+  </node>
 
 </launch>
