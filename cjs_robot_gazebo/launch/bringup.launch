@@ -1,5 +1,8 @@
 <launch>
 
+  <arg name="use_state_publisher" default="true"/>
+
+
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find open_manipulator_gazebo)/worlds/empty.world"/>
@@ -10,19 +13,20 @@
   <param name="robot_description"
    command="$(find xacro)/xacro --inorder $(find cjs_robot_description)/urdf/open_manipulator.urdf.xacro use_nominal_extrinsics:=true add_plug:=false"/>
 
+  <group if="$(arg use_state_publisher)">
 <!--
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <remap from="/joint_states" to="/open_manipulator/joint_states"/>
-  </node>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <remap from="/joint_states" to="/open_manipulator/joint_states"/>
+    </node>
 -->
-
   <!-- [MoveIt Setup Assistant]: We do not have a robot connected, so publish fake joint states -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
-    <rosparam param="source_list">[/joint_states]</rosparam>
-  </node>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+      <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
+      <rosparam param="source_list">[/joint_states]</rosparam>
+    </node>
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  </group>
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
