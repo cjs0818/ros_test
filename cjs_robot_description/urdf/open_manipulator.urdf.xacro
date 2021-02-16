@@ -394,8 +394,13 @@
 
 
   <!-- Added by jschoi -->
+<!--
   <xacro:sensor_d435 parent="link5" use_nominal_extrinsics="true">
     <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </xacro:sensor_d435>
+-->
+  <xacro:sensor_d435 parent="world" use_nominal_extrinsics="true">
+    <origin xyz="0.070 0.032 0.52" rpy="0 0.9 0"/>
   </xacro:sensor_d435>
 
 </robot>
