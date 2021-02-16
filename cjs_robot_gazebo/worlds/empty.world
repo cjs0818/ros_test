@@ -47,7 +47,10 @@
 
 
     <include>
+<!--
       <pose>0.219244 0.0 0.15 0 0 0</pose>
+-->
+      <pose>0.25 0.0 0.10 0 0 0</pose>
       <uri>model://obstacle</uri>
     </include>
 
