@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="138a7c90-a794-4585-bfbb-875e9ef92bfd" name="Default Changelist" comment="open_manipulator.gazebo.xacro: robotNamespace added. &lt;robotNamespace&gt;open_manipulator&lt;/robotNamespace&gt;" />
+    <list default="true" id="138a7c90-a794-4585-bfbb-875e9ef92bfd" name="Default Changelist" comment="open_manipulator.gazebo.xacro: robotNamespace added. &lt;robotNamespace&gt;open_manipulator&lt;/robotNamespace&gt;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cjs_robot_moveit_config/config/ros_controllers.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cjs_robot_moveit_config/config/ros_controllers.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cjs_robot_moveit_config/launch/demo_gazebo.launch" beforeDir="false" afterPath="$PROJECT_DIR$/cjs_robot_moveit_config/launch/demo_gazebo.launch" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
