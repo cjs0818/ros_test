@@ -10,6 +10,13 @@ open_manipulator:
       - joint2
       - joint3
       - joint4
+    constraints:
+        goal_time: 0.6
+        stopped_velocity_tolerance: 0.05
+        joint1: {trajectory: 0.1, goal: 0.1}
+        joint2: {trajectory: 0.1, goal: 0.1}
+        joint3: {trajectory: 0.1, goal: 0.1}
+        joint4: {trajectory: 0.1, goal: 0.1}
 
   gripper_controller:
     type: position_controllers/JointPositionController
