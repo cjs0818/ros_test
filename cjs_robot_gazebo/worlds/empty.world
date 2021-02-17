@@ -54,6 +54,11 @@
       <uri>model://obstacle</uri>
     </include>
 
+    <include>
+      <pose>0.2 -0.2 0.02 0 0 0</pose>
+      <uri>model://ar_box</uri>
+    </include>
+
   </world>
 
 </sdf>
